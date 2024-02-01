@@ -3,6 +3,12 @@ os: linux
 files:
   - source: /index.html
     destination: /var/www/html
+  - source: scripts/change_permissions.sh
+    destination: ../change_permissions.sh
+  - source: scripts/start_server.sh
+    destination: ../start_server.sh
+  - source: scripts/stop_server.sh
+    destination: ../stop_server.sh
 hooks:
   BeforeInstall:
     - location: scripts/change_permissions.sh
