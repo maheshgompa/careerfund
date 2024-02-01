@@ -9,8 +9,8 @@ hooks:
       timeout: 300
       runas: root
       commands:
-        - chmod +x start_server.sh
-        - chmod +x stop_server.sh
+        - chmod +x ./start_server.sh
+        - chmod +x ./stop_server.sh
   ApplicationStop:
     - location: scripts/stop_server
       timeout: 300
