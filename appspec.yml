@@ -4,21 +4,21 @@ files:
   - source: /index.html
     destination: /var/www/html
   - source: scripts/change_permissions.sh
-    destination: /opt/codedeploy-agent/deployment-root/$CODEDEPLOY_DEPLOYMENT_ID/deployment-archive/change_permissions.sh
+    destination: ./change_permissions.sh
   - source: scripts/start_server.sh
-    destination: /opt/codedeploy-agent/deployment-root/$CODEDEPLOY_DEPLOYMENT_ID/deployment-archive/start_server.sh
+    destination: ./start_server.sh
   - source: scripts/stop_server.sh
-    destination: /opt/codedeploy-agent/deployment-root/$CODEDEPLOY_DEPLOYMENT_ID/deployment-archive/stop_server.sh
+    destination: ./stop_server.sh
 hooks:
   BeforeInstall:
-    - location: /opt/codedeploy-agent/deployment-root/$CODEDEPLOY_DEPLOYMENT_ID/deployment-archive/change_permissions.sh
+    - location: scripts/change_permissions.sh
       timeout: 300
       runas: root
   ApplicationStop:
-    - location: /opt/codedeploy-agent/deployment-root/$CODEDEPLOY_DEPLOYMENT_ID/deployment-archive/stop_server.sh
+    - location: scripts/stop_server.sh
       timeout: 300
       runas: root
   ApplicationStart:
-    - location: /opt/codedeploy-agent/deployment-root/$CODEDEPLOY_DEPLOYMENT_ID/deployment-archive/start_server.sh
+    - location: scripts/start_server.sh
       timeout: 300
       runas: root
